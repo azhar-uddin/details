@@ -1,0 +1,24 @@
+<h1>Hello Customers</h1>
+<%= link_to 'New customer', new_customer_path %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+ 
+  <% @customers.each do |customer| %>
+    <tr>
+      <td><%= customer.name %></td>
+      <td><%= customer.description %></td>
+      <td><%= link_to 'show', customer_path(customer) %></td>
+      <td><%= link_to 'edit', edit_customer_path(customer) %></td>
+      <td><%= link_to 'Destroy', customer_path(customer),
+                    method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+
+

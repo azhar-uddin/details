@@ -1,0 +1,17 @@
+<p>
+  <strong>Doctor's Name:</strong>
+  <%= @doctor.name %>
+</p>
+
+<p>
+  <strong>Patients:</strong>
+  <% if @patients.exists? %>
+    <% @patients.each do |patient| %>
+    <%= patient.name %>,
+    <% end %>
+  <% else %>
+    nil
+  <% end %>
+</p>
+
+<%= link_to 'Doctors list', doctors_path %>

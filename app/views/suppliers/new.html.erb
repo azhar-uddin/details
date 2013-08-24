@@ -1,0 +1,12 @@
+<h2>New Supplier</h2>
+
+<%= form_for :supplier, url: suppliers_path do |f| %>
+  <p>
+    <%= f.label 'Supplier Name:' %><br>
+    <%= f.text_field :name %>
+  </p>
+  
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

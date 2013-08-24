@@ -1,0 +1,14 @@
+<p>
+  <strong>Patient Name:</strong>
+  <%= @patient.name %>
+</p>
+
+<p>
+  <strong>Doctors:</strong>
+  <% @doctors.each do |doctor| %>
+   <%= doctor.name %>,
+  <% end %>
+</p>
+
+<%= link_to 'list', patients_path %>
+<%= link_to 'edit', edit_patient_path %>

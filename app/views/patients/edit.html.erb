@@ -1,0 +1,20 @@
+<h2>Editing Patient Details</h2>
+<%= form_for @patient, url: patient_path(@patient.id) do |f| %>
+<p>
+  <%= f.label 'Patient name:' %><br>
+  <%= f.text_field :name %>
+</p>
+<strong><%= f.label 'Select Doctors:' %></strong><br>
+<% for doctor in Doctor.find(:all) %>
+<div>
+  <%= check_box_tag "patient[doctor_ids][]", doctor.id, @patient.doctors.include?(doctor) %>
+  <%= doctor.name %>
+</div>
+<% end %>
+
+<p>
+  <%= f.submit %>
+</p>
+<% end %>
+
+<%= link_to 'BACK', patients_path %>

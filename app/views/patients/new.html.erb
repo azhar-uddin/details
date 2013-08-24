@@ -1,0 +1,34 @@
+<h2>New Patient</h2>
+
+<% if @patient.errors.any? %>
+  <div id="errorExplanation">
+  <h2><%= pluralize(@patient.errors.count, "error") %> prohibited Patient from being saved:</h2>
+  <ul>
+  <% @patient.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+  <% end %>
+  </ul>
+  </div>
+<% end %>
+
+
+<%= form_for @patient, url: patient_path(@patient.id) do |f| %>
+<p>
+  <%= f.label 'Patient name:' %><br>
+  <%= f.text_field :name %>
+</p>
+<strong><%= f.label 'Select Doctors:' %></strong><br>
+<% for doctor in Doctor.find(:all) %>
+<div>
+  <%= check_box_tag "patient[doctor_ids][]", doctor.id, @patient.doctors.include?(doctor) %>
+  <%= doctor.name %>
+</div>
+<% end %>
+
+<p>
+  <%= f.submit %>
+</p>
+<% end %>
+
+
+<%= link_to 'list', patients_path %>

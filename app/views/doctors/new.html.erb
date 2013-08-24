@@ -1,0 +1,28 @@
+<h2>Doctor</h2>
+
+<% if @doctor.errors.any? %>
+  <div id="errorExplanation">
+  <h2><%= pluralize(@doctor.errors.count, "error") %> prohibited Doctor from being saved:</h2>
+  <ul>
+  <% @doctor.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+  <% end %>
+  </ul>
+  </div>
+<% end %>
+
+<%= form_for @doctor, url: doctor_path(@doctor.id) do |f| %>
+<p>
+  <%= f.label "Doctor's name"  %><br>
+  <%= f.text_field :name %>
+</p>
+
+
+
+<p>
+  <%= f.submit %>
+</p>
+<% end %>
+
+
+<%= link_to 'Doctors list', doctors_path %>

@@ -1,0 +1,22 @@
+<h2>List of Patients</h2>
+<%= link_to 'New Patient', new_patient_path %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+ 
+  <% @patients.each do |patient| %>
+    <tr>
+      <td><%= patient.name %></td>
+      <td><%= link_to 'show', patient_path(patient) %></td>
+      <td><%= link_to 'edit', edit_patient_path(patient) %></td>
+      <td><%#= link_to 'Destroy', customer_path(customer),
+                    method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+
+
